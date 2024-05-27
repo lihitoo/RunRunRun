@@ -6,30 +6,56 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
-    
-    [SerializeField] private Transform playerTransform;
-    [SerializeField] private float limitValue;
-    [SerializeField] private float speed;
 
+    CharacterController characterController;
+    [SerializeField] private float forwardSpeed;
+    private Vector3 targetPos = Vector3.zero;
+    private int desiredLane = 1;
+    public float laneDistance = 5f;
+    private void Awake()
+    {
+        characterController = GetComponent<CharacterController>();
+    }
+    private void Start()
+    {
+
+    }
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            Move();
+            desiredLane++;
+            if (desiredLane > 2)
+            {
+                desiredLane = 2;
+            }
         }
-        playerTransform.localPosition += new Vector3(0, 0, speed * Time.deltaTime );
-    }
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            desiredLane--;
+            if (desiredLane < 0)
+            {
+                desiredLane = 0;
+            }
+        }
+        targetPos = transform.position.z * transform.forward + transform.position.y * transform.up;
+        if (desiredLane == 0)
+        {
+            targetPos += Vector3.left * laneDistance;
+        }
+        else if (desiredLane == 2)
+        {
+            targetPos += Vector3.right * laneDistance;
+        }
+        transform.position = Vector3.Lerp(transform.position, targetPos, 10 * Time.deltaTime);
 
-    private void Move()
+
+    }
+    void FixedUpdate()
     {
-        float halfScreeen = Screen.width / 2;
-        float xPos = (Input.mousePosition.x - halfScreeen) / halfScreeen;
-        float finalXPos = Mathf.Clamp(xPos * limitValue, -limitValue, limitValue);
-        playerTransform.localPosition = new Vector3(finalXPos, playerTransform.position.y, playerTransform.position.z);
-        Debug.Log(xPos);
-        Debug.Log(playerTransform.localPosition);
+        transform.position += new Vector3(0, 0, forwardSpeed)*Time.fixedDeltaTime;
+        
     }
 
-    
 }
