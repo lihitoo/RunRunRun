@@ -12,9 +12,14 @@ public class PlayerController : MonoBehaviour
     private Vector3 targetPos = Vector3.zero;
     private int desiredLane = 1;
     public float laneDistance = 5f;
+    public float jumpForce = 5f;
+    Animator animator;
+    Rigidbody rb;
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
+        rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
     }
     private void Start()
     {
@@ -40,6 +45,7 @@ public class PlayerController : MonoBehaviour
             }
         }
         targetPos = transform.position.z * transform.forward + transform.position.y * transform.up;
+        //targetPos = transform.position;
         if (desiredLane == 0)
         {
             targetPos += Vector3.left * laneDistance;
@@ -48,8 +54,17 @@ public class PlayerController : MonoBehaviour
         {
             targetPos += Vector3.right * laneDistance;
         }
-        transform.position = Vector3.Lerp(transform.position, targetPos, 10 * Time.deltaTime);
-
+        transform.position = Vector3.Lerp(transform.position, targetPos, 5 * Time.deltaTime);
+        if(Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            rb.AddForce(Vector3.up*jumpForce,ForceMode.Impulse);
+            animator.SetTrigger("isJumping");
+        }
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            //rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            animator.SetTrigger("isRolling");
+        }
 
     }
     void FixedUpdate()
