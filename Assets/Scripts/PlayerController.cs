@@ -6,13 +6,15 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
-
+    //public CapsuleCollider capsuleCollider;
+    public BoxCollider boxCollider;
     CharacterController characterController;
     [SerializeField] private float forwardSpeed;
     private Vector3 targetPos = Vector3.zero;
     private int desiredLane = 1;
     public float laneDistance = 5f;
     public float jumpForce = 5f;
+    private Vector3 colliderSize;
     Animator animator;
     Rigidbody rb;
     private void Awake()
@@ -20,6 +22,9 @@ public class PlayerController : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        //capsuleCollider = GetComponent<CapsuleCollider>();
+        colliderSize = boxCollider.size;
+        boxCollider = GetComponent<BoxCollider>();
     }
     private void Start()
     {
@@ -64,8 +69,21 @@ public class PlayerController : MonoBehaviour
         {
             //rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             animator.SetTrigger("isRolling");
+            colliderDown();
+            Invoke("colliderReset", 2f);
         }
 
+    }
+    private void colliderDown()
+    {
+        if(boxCollider.size == colliderSize)
+        {
+            boxCollider.size = boxCollider.size + (Vector3.down / 2);
+        }
+    }
+    private void colliderReset()
+    {
+        boxCollider.size = colliderSize;
     }
     void FixedUpdate()
     {
