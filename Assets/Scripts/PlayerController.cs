@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.RightArrow) || SwipeController.swipeRight)
         {
             desiredLane++;
             if (desiredLane > 2)
@@ -42,13 +42,14 @@ public class PlayerController : MonoBehaviour
                 desiredLane = 2;
             }
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || SwipeController.swipeLeft)
         {
             desiredLane--;
             if (desiredLane < 0)
             {
                 desiredLane = 0;
             }
+
         }
         targetPos = transform.position.z * transform.forward + transform.position.y * transform.up;
         //targetPos = transform.position;
@@ -61,20 +62,22 @@ public class PlayerController : MonoBehaviour
             targetPos += Vector3.right * laneDistance;
         }
         transform.position = Vector3.Lerp(transform.position, targetPos, 5 * Time.deltaTime);
-        if(Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow) || SwipeController.swipeUp)
         {
-            if(transform.position.y < 0.3f)
+            if (!animator.GetBool("isJumping") && !animator.GetBool("isRolling"))
             {
-                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-                animator.SetTrigger("isJumping");
+                StartCoroutine(Jump());
             }
         }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.DownArrow) || SwipeController.swipeDown)
         {
             //rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            animator.SetTrigger("isRolling");
-            colliderDown();
-            Invoke("colliderReset", 2f);
+            if (!animator.GetBool("isJumping") && !animator.GetBool("isRolling"))
+            {
+                StartCoroutine(Roll());
+                colliderDown();
+                Invoke("colliderReset", 2f);
+            }
         }
 
     }
@@ -94,5 +97,17 @@ public class PlayerController : MonoBehaviour
         transform.position += new Vector3(0, 0, forwardSpeed)*Time.fixedDeltaTime;
         
     }
-
+    private IEnumerator Jump()
+    {
+        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        animator.SetBool("isJumping", true);
+        yield return new WaitForSeconds(2f);
+        animator.SetBool("isJumping", false);
+    }
+    private IEnumerator Roll()
+    {
+        animator.SetBool("isRolling",true);
+        yield return new WaitForSeconds(2f);
+        animator.SetBool("isRolling", false);
+    }
 }
