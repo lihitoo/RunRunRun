@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 colliderSize;
     Animator animator;
     Rigidbody rb;
+    public static int points = 0;
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
@@ -62,8 +63,11 @@ public class PlayerController : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, targetPos, 5 * Time.deltaTime);
         if(Input.GetKeyDown(KeyCode.UpArrow))
         {
-            rb.AddForce(Vector3.up*jumpForce,ForceMode.Impulse);
-            animator.SetTrigger("isJumping");
+            if(transform.position.y < 0.3f)
+            {
+                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                animator.SetTrigger("isJumping");
+            }
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
