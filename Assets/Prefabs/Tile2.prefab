@@ -313,7 +313,7 @@ GameObject:
   - component: {fileID: 345600372199962844}
   m_Layer: 0
   m_Name: coin 1 (4)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -382,7 +382,7 @@ GameObject:
   - component: {fileID: 3693357689518443357}
   m_Layer: 0
   m_Name: coin 1
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -907,7 +907,7 @@ GameObject:
   - component: {fileID: 7358828436911500311}
   m_Layer: 0
   m_Name: coin 1 (2)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1093,7 +1093,7 @@ GameObject:
   - component: {fileID: 4864983684448733718}
   m_Layer: 0
   m_Name: coin 1 (3)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1195,10 +1195,10 @@ GameObject:
   - component: {fileID: 2199859118218096584}
   m_Layer: 0
   m_Name: Urn
-  m_TagString: Untagged
+  m_TagString: Respawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &7182895879113681915
 Transform:
@@ -1300,10 +1300,10 @@ GameObject:
   - component: {fileID: 7373846803378933669}
   m_Layer: 0
   m_Name: RoadSign_A_circle
-  m_TagString: Untagged
+  m_TagString: Respawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &8073217550820699678
 Transform:
@@ -1406,10 +1406,10 @@ GameObject:
   - component: {fileID: 4219629323305785281}
   m_Layer: 0
   m_Name: Road
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &6941784487936225219
 Transform:
@@ -1532,7 +1532,7 @@ GameObject:
   - component: {fileID: 2579156906385852429}
   m_Layer: 0
   m_Name: coin 1 (1)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1687,7 +1687,7 @@ GameObject:
   - component: {fileID: 6764244073024552562}
   m_Layer: 0
   m_Name: coin 1 (5)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1758,10 +1758,10 @@ GameObject:
   - component: {fileID: 2080902324348756812}
   m_Layer: 0
   m_Name: Tetrapod
-  m_TagString: Untagged
+  m_TagString: Respawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &3136439344060308745
 Transform:
@@ -1867,7 +1867,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1.504308, y: 1.2373872, z: 1.3301306}
   m_Center: {x: 0.00000023841858, y: 0.6186936, z: -0.1508092}
@@ -1980,7 +1980,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &8553434872929881785
 Transform:

@@ -218,10 +218,10 @@ GameObject:
   - component: {fileID: 1208815260044955462}
   m_Layer: 0
   m_Name: Benche
-  m_TagString: Untagged
+  m_TagString: Respawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4428555867928282581
 Transform:
@@ -354,7 +354,7 @@ GameObject:
   - component: {fileID: 802110289708749358}
   m_Layer: 0
   m_Name: coin 1 (7)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -487,10 +487,10 @@ GameObject:
   - component: {fileID: 4813773555496910933}
   m_Layer: 0
   m_Name: Road_bumper
-  m_TagString: Untagged
+  m_TagString: Respawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2291722666322468383
 Transform:
@@ -622,7 +622,7 @@ GameObject:
   - component: {fileID: 82964948020619843}
   m_Layer: 0
   m_Name: coin 1 (8)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -724,7 +724,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &6791618891534386852
 Transform:
@@ -795,7 +795,7 @@ GameObject:
   - component: {fileID: 1007783763345124166}
   m_Layer: 0
   m_Name: coin 1 (5)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1133,10 +1133,10 @@ GameObject:
   - component: {fileID: 8340270425377226741}
   m_Layer: 0
   m_Name: Road
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &5269567693395375107
 Transform:
@@ -1259,7 +1259,7 @@ GameObject:
   - component: {fileID: 4173789488235410844}
   m_Layer: 0
   m_Name: coin 1 (9)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1518,7 +1518,7 @@ GameObject:
   - component: {fileID: 2812135304603899033}
   m_Layer: 0
   m_Name: coin 1 (4)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1759,7 +1759,7 @@ GameObject:
   - component: {fileID: 7835325064907383272}
   m_Layer: 0
   m_Name: coin 1 (6)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

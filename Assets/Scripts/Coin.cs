@@ -23,7 +23,7 @@ public class Coin : MonoBehaviour
             PlayerController.points++;
             Destroy(gameObject);
             //Debug.Log("Destroyed");
-            Debug.Log(PlayerController.points);
+            //Debug.Log(PlayerController.points);
         }
     }
 }

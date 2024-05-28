@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
         {
             targetPos += Vector3.right * laneDistance;
         }
-        transform.position = Vector3.Lerp(transform.position, targetPos, 5 * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, targetPos, 10 * Time.deltaTime);
         if (Input.GetKeyDown(KeyCode.UpArrow) || SwipeController.swipeUp)
         {
             if (!animator.GetBool("isJumping") && !animator.GetBool("isRolling"))
@@ -80,6 +80,24 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+
+        if (isColliding)
+        {
+            collisionTime += Time.deltaTime;
+
+            Debug.Log(collisionTime);
+            if (collisionTime >= requiredCollisionTime)
+            {
+                
+                LoseGame();
+            }
+        }
+        else
+        {
+            
+            collisionTime = 0f; // Reset thời gian va chạm nếu không còn va chạm
+        }
+        
     }
     private void colliderDown()
     {
@@ -101,13 +119,76 @@ public class PlayerController : MonoBehaviour
     {
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         animator.SetBool("isJumping", true);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         animator.SetBool("isJumping", false);
     }
     private IEnumerator Roll()
     {
         animator.SetBool("isRolling",true);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.2f);
         animator.SetBool("isRolling", false);
     }
+    
+
+    
+
+   /* private IEnumerator CheckLoseCondition(Collision collision)
+    {
+        yield return new WaitForSeconds(2f); // Wait for 3 seconds
+        //if(collision.gameObject.CompareTag("Respawn"))
+        {
+          //  LoseGame();
+        }
+
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Respawn"))
+        {
+            StartCoroutine(CheckLoseCondition(collision));
+            void OnCollisionEnter(Collision col)
+            {
+                if (collision.gameObject.CompareTag("Respawn"))
+                    LoseGame();
+            }
+        }
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        
+    }*/
+    private float collisionTime = 0f;
+    private float requiredCollisionTime = 2f; // Thời gian cần thiết để thua cuộc
+    private bool isColliding = false;
+    string name;
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Respawn"))
+        {
+            isColliding = true;
+            name = collision.gameObject.name;
+            Debug.Log("cham");
+        }
+        
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        //if (collision.gameObject.CompareTag("Respawn"))
+        {
+            isColliding = false;
+            //name = collision.gameObject.name;
+            Debug.Log("thoat cham");
+        }
+        
+    }
+
+    private void LoseGame()
+    {
+        Debug.Log("thua r cmm");
+        Time.timeScale = 0;
+        
+        
+    }
 }
+
